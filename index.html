@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RBS Servicios Industriales · Reparación de vehículos y maquinaria industrial</title>
+<link href="assets/fonts-archivo.css" rel="stylesheet">
+<style>
+:root{
+  --naranja:#F25822; --naranja-claro:#F89D6C;
+  --gris:#656263; --gris-claro:#A5A3A4; --gris-osc:#3E3B3C; --gris-noche:#2E2C2D;
+  --perla:#EEEDED; --blanco:#FFFFFF; --texto:#3E3B3C; --texto-2:#6E6B6C;
+  --grad:linear-gradient(90deg,var(--naranja-claro) 0%,var(--naranja) 60%);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--perla);color:var(--texto);font-family:Archivo,system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+.tag{font-weight:600;text-transform:uppercase;letter-spacing:.22em;font-size:13px;color:var(--naranja);display:flex;align-items:center;gap:14px}
+.tag:before{content:"";width:30px;height:5px;background:var(--grad);transform:skewX(-24deg)}
+h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.02}
+.btn{display:inline-flex;align-items:center;gap:12px;font-weight:700;font-size:16px;letter-spacing:.02em;padding:17px 28px;border-radius:3px}
+.btn svg{width:19px;height:19px}
+.btn-p{background:var(--naranja);color:#fff}
+.btn-s{border:1.5px solid rgba(255,255,255,.45);color:#fff}
+.btn-d{border:1.5px solid #c9c6c6;color:var(--texto)}
+
+/* header */
+header{position:absolute;top:0;left:0;right:0;z-index:5}
+.nav{display:flex;align-items:center;justify-content:space-between;height:100px}
+.nav img{height:54px}
+.nav ul{display:flex;gap:38px;list-style:none;font-weight:500;font-size:15px;color:rgba(255,255,255,.82)}
+.nav .tel{display:flex;align-items:center;gap:12px;color:#fff;font-weight:700;font-size:18px}
+.nav .tel small{display:block;font-size:12px;font-weight:500;color:rgba(255,255,255,.65);letter-spacing:.04em}
+.nav .tel .ic{width:42px;height:42px;border-radius:50%;background:var(--naranja);display:flex;align-items:center;justify-content:center}
+.nav .tel .ic svg{width:19px;height:19px;color:#fff}
+
+/* hero */
+.hero{position:relative;overflow:hidden;color:#fff;background:linear-gradient(100deg,#4a4748 0%,#5d5a5b 45%,#7d7a7b 100%)}
+.hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:44px 44px}
+.hero .top{position:relative;display:grid;grid-template-columns:1.45fr 1fr;gap:60px;align-items:end;padding-top:176px}
+.hero h1{font-size:70px;margin-top:22px}
+.hero h1 span{color:var(--naranja-claro)}
+.hero .lead{font-size:19px;color:rgba(255,255,255,.86);margin-bottom:30px}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
+.lineup{position:relative;margin-top:70px;padding:0 40px 0;margin-bottom:-2px}
+.lineup svg{display:block;width:100%;max-width:1480px;margin:0 auto;height:auto;--ln:#F6F5F5;--fl:rgba(255,255,255,.07);--acc:#F7864F}
+.lineup text{font-family:Archivo;font-size:13px;font-weight:600;letter-spacing:2.6px;fill:rgba(255,255,255,.62)}
+.ground{height:56px;background:rgba(0,0,0,.16);border-top:2px solid rgba(255,255,255,.35);position:relative}
+.jal{position:absolute;right:40px;top:16px;font-size:13px;color:rgba(255,255,255,.7);letter-spacing:.04em}
+.jal b{color:#fff}
+
+/* secciones */
+section{padding:120px 0}
+.head{display:grid;grid-template-columns:1.35fr 1fr;gap:60px;align-items:end;margin-bottom:56px}
+.head h2{font-size:48px;margin-top:18px}
+.head p{color:var(--texto-2);font-size:18px;max-width:500px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:#fff;padding:36px 34px 40px;border-radius:4px;position:relative;box-shadow:0 1px 0 #dcdada}
+.card .n{font-weight:600;color:#bdbaba;font-size:14px;letter-spacing:.12em;position:absolute;top:34px;right:34px}
+.card svg{width:46px;height:46px;color:var(--naranja);margin-bottom:26px}
+.card h3{font-size:22px;margin-bottom:10px;letter-spacing:-.01em}
+.card p{color:var(--texto-2);font-size:16px}
+
+.maq{background:var(--gris);color:#fff}
+.maq .head p{color:rgba(255,255,255,.8)}
+.maq .tag{color:var(--naranja-claro)}
+.tipos{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.14);border-radius:4px;overflow:hidden}
+.tipo{background:#6c696a;padding:30px 24px 30px}
+.tipo svg{width:100%;height:120px;--ln:#fff;--fl:rgba(255,255,255,.08);--acc:#F89D6C;margin-bottom:22px}
+.tipo h3{font-size:19px;letter-spacing:-.01em}
+.tipo p{font-size:14px;color:rgba(255,255,255,.75);margin-top:6px}
+
+.taller .wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:72px;align-items:center}
+.foto{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:4/3}
+.foto img{width:100%;height:100%;object-fit:cover;display:block}
+.foto:after{content:"";position:absolute;left:0;bottom:0;width:38%;height:8px;background:var(--grad)}
+.taller h2{font-size:44px;margin:18px 0 22px}
+.tt{display:flex;gap:22px;align-items:flex-start;margin:22px 0 24px}
+.tt img{width:78px;flex:none;margin-top:2px}
+.taller p{color:var(--texto-2);margin-bottom:28px}
+.check{list-style:none;display:grid;gap:15px}
+.check li{display:flex;gap:16px;align-items:flex-start}
+.check li:before{content:"";flex:none;width:20px;height:7px;margin-top:9px;background:var(--grad);transform:skewX(-24deg)}
+
+.jaltest{background:#fff;padding:96px 0}
+.jaltest .wrap{display:grid;grid-template-columns:1fr 420px;gap:80px;align-items:stretch}
+.jlogo{background:#1E9AD6;border-radius:4px;order:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;position:relative}
+.jlogo svg{width:76%}
+.jlogo .of{font-weight:700;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.18);padding:7px 14px;border-radius:2px}
+.jaltest h2{font-size:46px;margin:18px 0 18px}
+.jaltest .wrap>div:not(.jlogo){order:1}
+.jaltest p{color:var(--texto-2);font-size:18px;max-width:600px}
+.jpts{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:36px;padding-top:30px;border-top:1px solid #e3e1e1}
+.jpts b{display:block;font-size:17px;margin-bottom:4px}
+.jpts span{font-size:15px;color:var(--texto-2)}
+.contacto{background:var(--gris-osc);color:#fff}
+.contacto .grid2{display:grid;grid-template-columns:1fr 1.05fr;gap:70px}
+.contacto h2{font-size:60px;margin:18px 0 22px}
+.contacto .tag{color:var(--naranja-claro)}
+.big-tel{display:block;font-weight:800;font-size:50px;letter-spacing:-.01em;line-height:1;margin:30px 0 18px}
+.datos{display:grid;grid-template-columns:1fr 1fr;gap:26px 30px;margin-top:38px;padding-top:32px;border-top:1px solid rgba(255,255,255,.16)}
+.datos b{font-weight:600;text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:var(--naranja-claro);display:block;margin-bottom:6px}
+.datos span{color:rgba(255,255,255,.88);font-size:16px}
+.ph{background:rgba(242,88,34,.14);border:1px dashed rgba(248,157,108,.7);color:#ffc3a3;padding:1px 7px;border-radius:3px;font-size:.92em;white-space:nowrap}
+.form{background:#fff;color:var(--texto);padding:42px;border-radius:4px}
+.form h3{font-size:26px;margin-bottom:6px}
+.form>p{color:var(--texto-2);font-size:15px;margin-bottom:24px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.f{background:#F4F3F3;border:1px solid #dddada;border-radius:3px;padding:15px 16px;color:#8d8a8a;font-size:15px;margin-bottom:12px}
+.f.area{height:112px}
+.lbl{font-size:14px;color:var(--texto-2);margin:4px 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.chip{border:1px solid #cfcccc;padding:7px 14px;font-size:14px;border-radius:30px;color:var(--texto)}
+.chip.on{background:var(--gris-osc);border-color:var(--gris-osc);color:#fff}
+.form .btn{width:100%;justify-content:center;margin-top:6px}
+.mapa{margin-top:64px;height:280px;position:relative;background:#E6E5E5;border-radius:4px;overflow:hidden}
+.mapa svg{position:absolute;inset:0;width:100%;height:100%}
+.pin{position:absolute;left:58%;top:46%;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center}
+.pin .l{background:#fff;color:var(--texto);padding:10px 16px;border-radius:3px;font-weight:700;font-size:15px;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.pin .l small{display:block;font-weight:500;color:var(--texto-2);font-size:13px}
+.pin img{width:44px;margin-top:10px}
+
+footer{padding:40px 0;background:var(--gris-noche);color:rgba(255,255,255,.6);font-size:14px}
+footer>.wrap{display:flex;justify-content:space-between;align-items:center}
+footer img{height:34px}
+footer .legal-link{color:rgba(255,255,255,.6)}
+.legal{border-top:1px solid rgba(255,255,255,.08);margin-top:30px}
+.legal summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding-top:18px;font-size:13px;color:rgba(255,255,255,.45)}
+.legal summary::-webkit-details-marker{display:none}
+.legal summary i{display:block;width:9px;height:9px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin-top:-4px}
+.legal[open] summary i{transform:rotate(225deg);margin-top:4px}
+.legal .cols{display:grid;align-items:start;grid-template-columns:1fr 1.2fr 1fr;gap:44px;padding-top:26px;padding-bottom:10px}
+.legal h4{font-size:13px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:10px}
+.legal p{font-size:12.5px;line-height:1.6;color:rgba(255,255,255,.55);margin-bottom:10px}
+.legal b{font-weight:600;color:rgba(255,255,255,.72)}
+.ok{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--texto-2);margin:4px 0 12px}
+.ok .box{flex:none;width:18px;height:18px;border:1.5px solid #bdbaba;border-radius:3px;margin-top:1px;background:#fff}
+.ok a{color:var(--texto);text-decoration:underline}
+.info1{font-size:12px;line-height:1.5;color:#9a9797;margin-top:14px}
+
+.sticky{display:none}
+
+/* ===== móvil ===== */
+@media (max-width:760px){
+  body{font-size:16px;overflow-x:hidden}
+  .wrap{padding:0 20px}
+  .nav{height:76px}.nav img{height:36px}.nav ul,.nav .tel>span{display:none}
+  .hero .top{grid-template-columns:1fr;gap:22px;padding-top:112px}
+  .hero h1{font-size:42px;margin-top:16px}
+  .hero .lead{font-size:16px;margin-bottom:24px}
+  .hero .ctas{gap:10px}.hero .ctas .btn{flex:1;justify-content:center;padding:15px 10px;font-size:15px}
+  .lineup{margin-top:44px;padding:0;overflow:hidden}
+  .lineup svg{width:250%;max-width:none;margin-left:2%}
+  .ground{height:48px}.jal{left:20px;right:auto;top:14px;font-size:12px}
+  section{padding:76px 0}
+  .head{grid-template-columns:1fr;gap:16px;margin-bottom:36px}
+  .head h2{font-size:36px}
+  .head p{font-size:16px}
+  .cards{grid-template-columns:1fr;gap:12px}
+  .card{padding:28px 24px 30px}.card svg{width:40px;height:40px;margin-bottom:16px}
+  .tipos{grid-template-columns:1fr 1fr}
+  .tipo{padding:20px 14px}.tipo svg{height:76px;margin-bottom:14px}.tipo h3{font-size:16px}.tipo p{display:none}
+  .tipo:last-child{grid-column:1/-1}
+  .taller .wrap,.contacto .grid2{grid-template-columns:1fr;gap:40px}
+  .taller h2{font-size:34px}
+  .tt{gap:14px}.tt img{width:58px}
+  .contacto h2{font-size:40px}
+  .big-tel{font-size:40px}
+  .datos{grid-template-columns:1fr;gap:20px}
+  .form{padding:28px 22px}
+  .row{grid-template-columns:1fr;gap:0}
+  .mapa{height:220px;margin-top:44px}
+  .jaltest{padding:70px 0}.jaltest .wrap{grid-template-columns:1fr;gap:36px}.jlogo{padding:40px 0}.jaltest h2{font-size:34px}.jaltest p{font-size:16px}.jpts{grid-template-columns:1fr;gap:18px}
+  .pin{top:72%;left:52%}
+  footer{padding-bottom:110px}
+  footer>.wrap{flex-direction:column;gap:14px;text-align:center}
+  .legal .cols{grid-template-columns:1fr;gap:20px}
+  .sticky{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;padding:12px 16px 16px;background:rgba(46,44,45,.96);z-index:20}
+  .sticky .btn{justify-content:center;padding:14px 10px}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8Z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.3-.3-.4-.5-.5Z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" d="M4 12h15M13 6l6 6-6 6"/></symbol>
+
+    <!-- Máquinas en dibujo técnico (línea + acento naranja). Suelo en y=196 -->
+    <symbol id="m-reach" viewBox="-10 0 370 200">
+      <g fill="none" stroke="var(--ln)" stroke-width="2.4" stroke-linejoin="round">
+        <rect x="4" y="84" width="112" height="62" stroke="var(--acc)" stroke-dasharray="6 6" stroke-width="1.6"/>
+        <path d="M300 134 L318 118 L64 26 L50 42 Z" fill="var(--fl)"/>
+        <path d="M58 40 V70"/>
+        <rect x="0" y="70" width="120" height="12" fill="var(--fl)"/>
+        <path d="M30 172 V142 H330 Q342 142 342 154 V172 Z" fill="var(--fl)"/>
+        <rect x="300" y="120" width="42" height="22" fill="var(--fl)"/>
+        <rect x="170" y="70" width="66" height="72" rx="4" fill="var(--fl)"/>
+        <path d="M180 80 H226 V114 H180 Z"/>
+        <circle cx="82" cy="170" r="26" fill="var(--fl)"/><circle cx="282" cy="174" r="22" fill="var(--fl)"/>
+      </g>
+      <g fill="var(--acc)"><circle cx="82" cy="170" r="7"/><circle cx="282" cy="174" r="6"/><circle cx="309" cy="126" r="4"/></g>
+    </symbol>
+
+    <symbol id="m-tractora" viewBox="0 0 230 200">
+      <g fill="none" stroke="var(--ln)" stroke-width="2.4" stroke-linejoin="round">
+        <path d="M6 172 V138 H222 V172 Z" fill="var(--fl)"/>
+        <path d="M14 138 V60 Q14 50 24 50 H86 L98 138 Z" fill="var(--fl)"/>
+        <path d="M24 62 H80 L87 104 H24 Z"/>
+        <path d="M120 138 L132 122 H216 V138"/>
+        <circle cx="52" cy="172" r="24" fill="var(--fl)"/><circle cx="180" cy="172" r="24" fill="var(--fl)"/>
+      </g>
+      <rect x="46" y="40" width="14" height="10" fill="var(--acc)"/>
+      <path d="M8 170 L20 156 M22 170 L34 156 M36 170 L48 156" stroke="var(--acc)" stroke-width="4"/>
+      <g fill="var(--acc)"><circle cx="52" cy="172" r="6"/><circle cx="180" cy="172" r="6"/></g>
+    </symbol>
+
+    <symbol id="m-carretilla" viewBox="0 0 190 200">
+      <g fill="none" stroke="var(--ln)" stroke-width="2.4" stroke-linejoin="round">
+        <path d="M14 178 V114 Q14 104 24 104 H112 V178 Z" fill="var(--fl)"/>
+        <path d="M30 104 L42 34 H112 V104"/>
+        <path d="M54 104 V86 H78"/>
+        <rect x="118" y="14" width="10" height="166" fill="var(--fl)"/>
+        <rect x="131" y="42" width="7" height="140" fill="var(--fl)"/>
+        <circle cx="42" cy="180" r="16" fill="var(--fl)"/><circle cx="100" cy="182" r="14" fill="var(--fl)"/>
+      </g>
+      <path d="M140 130 V192 H186" fill="none" stroke="var(--acc)" stroke-width="4.5"/>
+      <g fill="var(--acc)"><circle cx="42" cy="180" r="5"/><circle cx="100" cy="182" r="4"/></g>
+    </symbol>
+
+    <symbol id="m-camion" viewBox="0 0 370 200">
+      <g fill="none" stroke="var(--ln)" stroke-width="2.4" stroke-linejoin="round">
+        <path d="M10 172 V96 Q10 80 26 80 H74 Q86 80 88 92 L94 172 Z" fill="var(--fl)"/>
+        <path d="M22 92 H76 L80 124 H22 Z"/>
+        <path d="M94 166 H300 V152 H94 Z" fill="var(--fl)"/>
+        <path d="M102 152 V118 H290 V152 M140 118 V152 M178 118 V152 M216 118 V152 M254 118 V152"/>
+        <rect x="302" y="124" width="26" height="48" fill="var(--fl)"/>
+        <rect x="332" y="48" width="9" height="130" fill="var(--fl)"/>
+        <circle cx="48" cy="174" r="22" fill="var(--fl)"/><circle cx="214" cy="174" r="22" fill="var(--fl)"/><circle cx="262" cy="174" r="22" fill="var(--fl)"/>
+        <circle cx="314" cy="184" r="11" fill="var(--fl)"/>
+      </g>
+      <path d="M342 150 V190 H366" fill="none" stroke="var(--acc)" stroke-width="4.5"/>
+      <g fill="var(--acc)"><circle cx="48" cy="174" r="6"/><circle cx="214" cy="174" r="6"/><circle cx="262" cy="174" r="6"/></g>
+    </symbol>
+
+    <symbol id="m-grua" viewBox="0 0 400 200">
+      <g fill="none" stroke="var(--ln)" stroke-width="2.4" stroke-linejoin="round">
+        <path d="M112 116 L360 8 L372 20 L126 128 Z" fill="var(--fl)"/>
+        <path d="M10 168 V140 H300 V168 Z" fill="var(--fl)"/>
+        <path d="M300 168 V102 Q300 92 310 92 H352 Q364 92 366 104 L374 168 Z" fill="var(--fl)"/>
+        <path d="M310 102 H350 L356 132 H310 Z"/>
+        <rect x="70" y="108" width="112" height="32" fill="var(--fl)"/>
+        <rect x="150" y="80" width="34" height="28" fill="var(--fl)"/>
+        <path d="M40 168 V186 H22 M272 168 V186 H290"/>
+        <circle cx="62" cy="174" r="22" fill="var(--fl)"/><circle cx="112" cy="174" r="22" fill="var(--fl)"/><circle cx="252" cy="174" r="22" fill="var(--fl)"/>
+      </g>
+      <path d="M366 16 V72 M360 72 q6 12 12 0" fill="none" stroke="var(--acc)" stroke-width="3"/>
+      <g fill="var(--acc)"><circle cx="62" cy="174" r="6"/><circle cx="112" cy="174" r="6"/><circle cx="252" cy="174" r="6"/><circle cx="118" cy="122" r="4"/></g>
+    </symbol>
+  </defs>
+</svg>
+
+<header>
+  <div class="wrap nav">
+    <img src="assets/logo-neg.svg" alt="RBS Servicios Industriales">
+    <ul><li>Servicios</li><li>Qué reparamos</li><li>El taller</li><li>Contacto</li></ul>
+    <a class="tel" href="tel:+34697212456"><span class="ic"><svg><use href="#i-tel"/></svg></span><span><small>Llámanos</small>697 21 24 56</span></a>
+  </div>
+</header>
+
+<section class="hero" style="padding:0">
+  <div class="wrap top">
+    <div>
+      <div class="tag" style="color:var(--naranja-claro)">RBS Servicios Industriales</div>
+      <h1>Reparación de vehículos y maquinaria <span>industrial.</span></h1>
+    </div>
+    <div>
+      <p class="lead">Camiones, tractoras, carretillas, manipuladoras y grúas. Diagnosis, mecánica, hidráulica y electricidad en el mismo taller.</p>
+      <div class="ctas">
+        <a class="btn btn-p" href="tel:+34697212456"><svg><use href="#i-tel"/></svg>Llamar al taller</a>
+        <a class="btn btn-s" href="#"><svg><use href="#i-wa"/></svg>WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="lineup">
+    <svg viewBox="0 0 1700 204">
+      <use href="#m-reach" x="10" y="0" width="370" height="200"/>
+      <use href="#m-tractora" x="430" y="0" width="230" height="200"/>
+      <use href="#m-carretilla" x="710" y="0" width="190" height="200"/>
+      <use href="#m-camion" x="930" y="0" width="370" height="200"/>
+      <use href="#m-grua" x="1310" y="0" width="390" height="200"/>
+    </svg>
+  </div>
+  <div class="ground"><span class="jal">Centro de diagnosis <b>Jaltest</b></span></div>
+</section>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="tag">Servicios</div><h2>Diagnóstico rápido, reparación bien hecha.</h2></div>
+      <p>Una máquina parada cuesta dinero. Localizamos la avería, te explicamos qué tiene y la ponemos a trabajar cuanto antes.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><span class="n">01</span><svg viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="2.6"><rect x="6" y="8" width="40" height="28" rx="3"/><path d="M12 28l8-10 6 6 8-10 6 8M18 44h16M26 36v8"/></svg><h3>Diagnosis electrónica</h3><p>Equipos Jaltest para leer centralitas, localizar averías y calibrar sistemas multimarca.</p></div>
+      <div class="card"><span class="n">02</span><svg viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="2.6"><rect x="6" y="16" width="30" height="22" rx="2"/><path d="M36 22h6l4 4v8l-4 4h-6M14 16V10h14v6M12 38v6M30 38v6"/></svg><h3>Motor y transmisión</h3><p>Averías y reparación de motores diésel, cajas de cambio, embragues y diferenciales.</p></div>
+      <div class="card"><span class="n">03</span><svg viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="2.6"><rect x="4" y="20" width="30" height="12" rx="2"/><path d="M34 26h14M10 20v-6h8v6M26 32v6h-8"/><circle cx="44" cy="26" r="3"/></svg><h3>Hidráulica</h3><p>Cilindros, bombas, válvulas y latiguillos. Fugas y pérdidas de presión en mástiles y brazos.</p></div>
+      <div class="card"><span class="n">04</span><svg viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M28 4L12 30h12l-4 18 18-28H26z"/></svg><h3>Electricidad</h3><p>Arranque, carga, cableado, iluminación y sistemas de seguridad.</p></div>
+      <div class="card"><span class="n">05</span><svg viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="2.6"><circle cx="26" cy="26" r="18"/><path d="M26 14v12l8 6"/></svg><h3>Mantenimiento preventivo</h3><p>Revisiones por horas de trabajo, filtros, fluidos y engrase para evitar paradas.</p></div>
+      <div class="card"><span class="n">06</span><svg viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 34h28V18H4zM32 24h8l8 7v3H32"/><circle cx="12" cy="38" r="4"/><circle cx="40" cy="38" r="4"/><path d="M14 10l4 4 8-8"/></svg><h3>Asistencia en sus instalaciones</h3><p>Si la máquina no puede venir, vamos con la furgoneta taller.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="maq" id="maquinaria">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="tag">Qué reparamos</div><h2>Vehículos industriales y equipos de elevación.</h2></div>
+      <p>Trabajamos con la maquinaria que mueve puertos, naves logísticas, obras e industria.</p>
+    </div>
+    <div class="tipos">
+      <div class="tipo"><svg><use href="#m-camion"/></svg><h3>Camiones</h3><p>Rígidos, con pluma y con carretilla portátil.</p></div>
+      <div class="tipo"><svg><use href="#m-tractora"/></svg><h3>Tractoras</h3><p>Cabezas tractoras y tractoras de terminal.</p></div>
+      <div class="tipo"><svg><use href="#m-carretilla"/></svg><h3>Carretillas</h3><p>Elevadoras diésel, eléctricas y de gas.</p></div>
+      <div class="tipo"><svg><use href="#m-reach"/></svg><h3>Manipuladoras</h3><p>Reach stackers y manipuladoras de contenedores.</p></div>
+      <div class="tipo"><svg><use href="#m-grua"/></svg><h3>Grúas</h3><p>Grúas autopropulsadas y camiones grúa.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="taller" id="taller">
+  <div class="wrap">
+    <div class="foto"><img src="assets/foto-fachada.jpg" alt="Nave de RBS Servicios Industriales"></div>
+    <div>
+      <div class="tag">El taller</div>
+      <h2>Nave propia, puerta grande y equipo de diagnosis.</h2>
+      <p>Entran camiones, grúas y tractoras sin maniobras imposibles. Y si no pueden venir, vamos nosotros.</p>
+      <ul class="check">
+        <li>Centro de diagnosis Jaltest by Cojali</li>
+        <li>Portón de gran altura para vehículos industriales</li>
+        <li>Furgoneta taller para reparaciones fuera</li>
+        <li>Presupuesto antes de empezar la reparación</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="jaltest" id="jaltest">
+  <div class="wrap">
+    <div class="jlogo">
+      <!-- Logo provisional redibujado: sustituir por el vector oficial de Cojali -->
+      <svg viewBox="0 0 300 110">
+        <g fill="#fff">
+          <circle cx="30" cy="52" r="22"/><circle cx="58" cy="70" r="7"/>
+          <text x="78" y="72" font-family="Archivo" font-weight="700" font-size="62" letter-spacing="-1">jaltest</text>
+          <text x="214" y="98" font-family="Archivo" font-weight="500" font-size="15" letter-spacing="1">BY</text>
+          <text x="238" y="98" font-family="Archivo" font-weight="800" font-size="15" letter-spacing="1">COJALI</text>
+        </g>
+        <circle cx="30" cy="52" r="9" fill="#1E9AD6"/>
+      </svg>
+      <span class="of">Servicio oficial</span>
+    </div>
+    <div>
+      <div class="tag">Diagnosis oficial</div>
+      <h2>Servicio oficial Jaltest by Cojali.</h2>
+      <p>Trabajamos con Jaltest, la herramienta de diagnosis multimarca de referencia en vehículo industrial y maquinaria. Leemos centralitas, localizamos averías y calibramos sistemas con el equipo y el software oficiales.</p>
+      <div class="jpts">
+        <div><b>Multimarca</b><span>Un mismo equipo para marcas y modelos distintos.</span></div>
+        <div><b>Camiones y maquinaria</b><span>Vehículo industrial, carretillas y equipos de manipulación.</span></div>
+        <div><b>En taller o fuera</b><span>Diagnosis en nuestra nave o en sus instalaciones.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="grid2">
+      <div>
+        <div class="tag">Contacto</div>
+        <h2>¿Máquina parada? Llámanos.</h2>
+        <p style="color:rgba(255,255,255,.78);max-width:440px">Cuéntanos qué máquina es y qué le pasa. Te decimos cuándo podemos verla o si vamos nosotros.</p>
+        <a class="big-tel" href="tel:+34697212456">697 21 24 56</a>
+        <a class="btn btn-s" href="#"><svg><use href="#i-wa"/></svg>Escribir por WhatsApp</a>
+        <div class="datos">
+          <div><b>Dirección</b><span>Pol. Ind. La Menacha<br>Avda. Caetaria, 4<br>11205 Algeciras, Cádiz</span></div>
+          <div><b>Horario</b><span>Lunes a viernes<br>8:00–14:00 y 15:30–17:30<br>Sábado y domingo cerrado</span></div>
+          <div><b>Email</b><span>info@rbsindustrial.com</span></div>
+          <div><b>Cómo llegar</b><a href="https://www.google.com/maps/place/RBS+Servicios+Industriales/@36.1589243,-5.4652172,17z"><span>Abrir en Google Maps →</span></a></div>
+        </div>
+      </div>
+      <div class="form">
+        <h3>Pide cita o presupuesto</h3>
+        <p>Te contestamos lo antes posible.</p>
+        <div class="row"><div class="f">Nombre o empresa</div><div class="f">Teléfono</div></div>
+        <div class="lbl">Tipo de vehículo o máquina</div>
+        <div class="chips"><span class="chip">Camión</span><span class="chip">Tractora</span><span class="chip on">Carretilla</span><span class="chip">Manipuladora</span><span class="chip">Grúa</span><span class="chip">Otro</span></div>
+        <div class="row"><div class="f">Marca y modelo</div><div class="f">¿Dónde está?</div></div>
+        <div class="f area">¿Qué le pasa?</div>
+        <label class="ok"><span class="box"></span><span>He leído y acepto la <a href="#legal" onclick="document.getElementById('legal').open=true">política de privacidad</a>.</span></label>
+        <a class="btn btn-p" href="#">Enviar consulta <svg><use href="#i-arrow"/></svg></a>
+        <p class="info1">Responsable: Ruibasur Servicios Industriales, S.L. Finalidad: atender tu consulta. Derechos: acceso, rectificación, supresión y otros en info@rbsindustrial.com.</p>
+      </div>
+    </div>
+    <a class="mapa" href="https://www.google.com/maps/place/RBS+Servicios+Industriales/@36.1589243,-5.4652172,17z" style="display:block">
+      <svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid slice">
+        <rect width="1200" height="300" fill="#E6E5E5"/>
+        <g stroke="#FFFFFF" stroke-width="14" fill="none"><path d="M-20 210 C 300 180 500 240 1220 120"/><path d="M200 -20 L 380 320"/><path d="M820 -20 C 760 120 800 200 700 320"/></g>
+        <g stroke="#FFFFFF" stroke-width="26" fill="none"><path d="M-20 90 C 400 120 700 60 1220 70"/></g>
+        <g stroke="#F6F5F5" stroke-width="5" fill="none"><path d="M560 0v300M620 0v300M480 160h300M480 200h300"/></g>
+        <g fill="#D3D1D1"><rect x="580" y="112" width="110" height="40"/><rect x="640" y="170" width="70" height="60"/><rect x="500" y="170" width="50" height="50"/><rect x="900" y="150" width="120" height="70"/><rect x="80" y="130" width="90" height="50"/></g>
+        <rect x="660" y="112" width="60" height="40" fill="rgba(242,88,34,.22)" stroke="#F25822" stroke-width="2"/>
+      </svg>
+      <div class="pin"><div class="l">RBS Servicios Industriales<small>Pol. Ind. La Menacha · Algeciras</small></div><img src="assets/iso.svg" alt=""></div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo-neg.svg" alt="RBS">
+    <span>Ruibasur Servicios Industriales, S.L. · B-21946181</span>
+    <a href="#legal" class="legal-link" onclick="document.getElementById('legal').open=true">Aviso legal · Privacidad · Cookies</a>
+  </div>
+  <details class="legal" id="legal">
+    <summary class="wrap"><span>Información legal</span><i></i></summary>
+    <div class="wrap cols">
+      <div>
+        <h4>Aviso legal</h4>
+        <p><b>Titular:</b> Ruibasur Servicios Industriales, S.L. (nombre comercial RBS Servicios Industriales). <b>NIF:</b> B-21946181. <b>Domicilio:</b> Pol. Ind. La Menacha, Avda. Caetaria, 4, 11205 Algeciras (Cádiz). <b>Teléfono:</b> 697 212 456. <b>Email:</b> info@rbsindustrial.com. <b>Registro:</b> <span class="ph">[Registro Mercantil de Cádiz, tomo, folio, hoja]</span>.</p>
+        <p>El acceso a esta web es gratuito e implica aceptar estas condiciones. Los textos, imágenes, logotipos y diseño pertenecen al titular o se usan con autorización, y no pueden reproducirse sin su consentimiento. Jaltest y Cojali son marcas de sus respectivos titulares. El titular no responde del contenido de las webs enlazadas. Esta web se rige por la legislación española.</p>
+      </div>
+      <div>
+        <h4>Privacidad</h4>
+        <p><b>Responsable:</b> Ruibasur Servicios Industriales, S.L., B-21946181, con los datos de contacto indicados en el aviso legal.</p>
+        <p><b>Finalidad:</b> atender tus consultas, darte cita y preparar presupuestos con los datos que nos facilitas por el formulario, teléfono, WhatsApp o email. <b>Legitimación:</b> tu consentimiento y, si contratas, la ejecución del servicio. <b>Conservación:</b> el tiempo necesario para atender la consulta y, si hay relación comercial, los plazos legales.</p>
+        <p><b>Destinatarios:</b> no cedemos tus datos salvo obligación legal. Los proveedores de alojamiento web y correo acceden a ellos como encargados del tratamiento. <b>Derechos:</b> acceso, rectificación, supresión, oposición, limitación y portabilidad en info@rbsindustrial.com. Puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).</p>
+      </div>
+      <div>
+        <h4>Cookies</h4>
+        <p>Esta web no utiliza cookies analíticas, publicitarias ni de terceros. Solo podría usar cookies técnicas imprescindibles para su funcionamiento, que no requieren consentimiento.</p>
+        <p>El enlace a Google Maps te lleva a la web de Google, que aplica su propia política de cookies. Si en el futuro incorporamos otro tipo de cookies, te pediremos el consentimiento antes de instalarlas.</p>
+      </div>
+    </div>
+  </details>
+</footer>
+
+<div class="sticky">
+  <a class="btn btn-p" href="tel:+34697212456"><svg><use href="#i-tel"/></svg>Llamar</a>
+  <a class="btn btn-s" href="#"><svg><use href="#i-wa"/></svg>WhatsApp</a>
+</div>
+</body>
+</html>
