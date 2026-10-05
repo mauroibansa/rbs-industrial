@@ -105,15 +105,21 @@ section{padding:120px 0}
 .ph{background:rgba(242,88,34,.14);border:1px dashed rgba(248,157,108,.7);color:#ffc3a3;padding:1px 7px;border-radius:3px;font-size:.92em;white-space:nowrap}
 .form{background:#fff;color:var(--texto);padding:42px;border-radius:4px}
 .form h3{font-size:26px;margin-bottom:6px}
-.form>p{color:var(--texto-2);font-size:15px;margin-bottom:24px}
+.form p.sub{color:var(--texto-2);font-size:15px;margin-bottom:24px}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.f{background:#F4F3F3;border:1px solid #dddada;border-radius:3px;padding:15px 16px;color:#8d8a8a;font-size:15px;margin-bottom:12px}
-.f.area{height:112px}
+.f{display:block;width:100%;background:#F4F3F3;border:1px solid #dddada;border-radius:3px;padding:15px 16px;color:var(--texto);font:inherit;font-size:15px;margin-bottom:12px}
+.f::placeholder{color:#8d8a8a}
+.f:focus{outline:none;border-color:var(--gris);background:#fff}
+.hp{position:absolute;left:-9999px}
+.sent{background:#eef6ee;color:#2f6b2f;padding:12px 14px;border-radius:3px;font-size:15px;margin-bottom:18px}
+.f.area{height:112px;resize:vertical}
 .lbl{font-size:14px;color:var(--texto-2);margin:4px 0 8px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
 .chip{border:1px solid #cfcccc;padding:7px 14px;font-size:14px;border-radius:30px;color:var(--texto)}
-.chip.on{background:var(--gris-osc);border-color:var(--gris-osc);color:#fff}
-.form .btn{width:100%;justify-content:center;margin-top:6px}
+.chips input:checked+.chip{background:var(--gris-osc);border-color:var(--gris-osc);color:#fff}
+.chips label{cursor:pointer}.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips input:focus-visible+.chip{outline:2px solid var(--naranja);outline-offset:2px}
+.form .btn{width:100%;border:0;cursor:pointer;font:inherit;font-weight:700;justify-content:center;margin-top:6px}
 .mapa{margin-top:64px;height:280px;position:relative;background:#E6E5E5;border-radius:4px;overflow:hidden}
 .mapa svg{position:absolute;inset:0;width:100%;height:100%}
 .pin{position:absolute;left:58%;top:46%;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center}
@@ -135,7 +141,7 @@ footer .legal-link{color:rgba(255,255,255,.6)}
 .legal p{font-size:12.5px;line-height:1.6;color:rgba(255,255,255,.55);margin-bottom:10px}
 .legal b{font-weight:600;color:rgba(255,255,255,.72)}
 .ok{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--texto-2);margin:4px 0 12px}
-.ok .box{flex:none;width:18px;height:18px;border:1.5px solid #bdbaba;border-radius:3px;margin-top:1px;background:#fff}
+.ok input{flex:none;width:18px;height:18px;margin-top:2px;accent-color:var(--gris-osc)}
 .ok a{color:var(--texto);text-decoration:underline}
 .info1{font-size:12px;line-height:1.5;color:#9a9797;margin-top:14px}
 
@@ -281,7 +287,7 @@ footer .legal-link{color:rgba(255,255,255,.6)}
       <p class="lead">Camiones, tractoras, carretillas, manipuladoras y grúas. Diagnosis, mecánica, hidráulica y electricidad en el mismo taller.</p>
       <div class="ctas">
         <a class="btn btn-p" href="tel:+34697212456"><svg><use href="#i-tel"/></svg>Llamar al taller</a>
-        <a class="btn btn-s" href="#"><svg><use href="#i-wa"/></svg>WhatsApp</a>
+        <a class="btn btn-s" href="https://wa.me/34697212456"><svg><use href="#i-wa"/></svg>WhatsApp</a>
       </div>
     </div>
   </div>
@@ -384,7 +390,7 @@ footer .legal-link{color:rgba(255,255,255,.6)}
         <h2>¿Máquina parada? Llámanos.</h2>
         <p style="color:rgba(255,255,255,.78);max-width:440px">Cuéntanos qué máquina es y qué le pasa. Te decimos cuándo podemos verla o si vamos nosotros.</p>
         <a class="big-tel" href="tel:+34697212456">697 21 24 56</a>
-        <a class="btn btn-s" href="#"><svg><use href="#i-wa"/></svg>Escribir por WhatsApp</a>
+        <a class="btn btn-s" href="https://wa.me/34697212456"><svg><use href="#i-wa"/></svg>Escribir por WhatsApp</a>
         <div class="datos">
           <div><b>Dirección</b><span>Pol. Ind. La Menacha<br>Avda. Caetaria, 4<br>11205 Algeciras, Cádiz</span></div>
           <div><b>Horario</b><span>Lunes a viernes<br>8:00–14:00 y 15:30–17:30<br>Sábado y domingo cerrado</span></div>
@@ -392,18 +398,31 @@ footer .legal-link{color:rgba(255,255,255,.6)}
           <div><b>Cómo llegar</b><a href="https://www.google.com/maps/place/RBS+Servicios+Industriales/@36.1589243,-5.4652172,17z"><span>Abrir en Google Maps →</span></a></div>
         </div>
       </div>
-      <div class="form">
+      <form class="form" action="https://formsubmit.co/info@rbsindustrial.com" method="POST">
+        <input type="hidden" name="_subject" value="Nueva consulta desde rbsindustrial.com">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://www.rbsindustrial.com/?enviado=1#contacto">
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
         <h3>Pide cita o presupuesto</h3>
-        <p>Te contestamos lo antes posible.</p>
-        <div class="row"><div class="f">Nombre o empresa</div><div class="f">Teléfono</div></div>
+        <p class="sub">Te contestamos lo antes posible.</p>
+        <p class="sent" hidden>Gracias. Hemos recibido tu consulta y te contestamos lo antes posible.</p>
+        <div class="row"><input class="f" name="Nombre o empresa" placeholder="Nombre o empresa" required><input class="f" type="tel" name="Teléfono" placeholder="Teléfono" required></div>
         <div class="lbl">Tipo de vehículo o máquina</div>
-        <div class="chips"><span class="chip">Camión</span><span class="chip">Tractora</span><span class="chip on">Carretilla</span><span class="chip">Manipuladora</span><span class="chip">Grúa</span><span class="chip">Otro</span></div>
-        <div class="row"><div class="f">Marca y modelo</div><div class="f">¿Dónde está?</div></div>
-        <div class="f area">¿Qué le pasa?</div>
-        <label class="ok"><span class="box"></span><span>He leído y acepto la <a href="#legal" onclick="document.getElementById('legal').open=true">política de privacidad</a>.</span></label>
-        <a class="btn btn-p" href="#">Enviar consulta <svg><use href="#i-arrow"/></svg></a>
+        <div class="chips">
+          <label><input type="radio" name="Tipo de máquina" value="Camión"><span class="chip">Camión</span></label>
+          <label><input type="radio" name="Tipo de máquina" value="Tractora"><span class="chip">Tractora</span></label>
+          <label><input type="radio" name="Tipo de máquina" value="Carretilla"><span class="chip">Carretilla</span></label>
+          <label><input type="radio" name="Tipo de máquina" value="Manipuladora"><span class="chip">Manipuladora</span></label>
+          <label><input type="radio" name="Tipo de máquina" value="Grúa"><span class="chip">Grúa</span></label>
+          <label><input type="radio" name="Tipo de máquina" value="Otro"><span class="chip">Otro</span></label>
+        </div>
+        <div class="row"><input class="f" name="Marca y modelo" placeholder="Marca y modelo"><input class="f" name="Ubicación" placeholder="¿Dónde está?"></div>
+        <textarea class="f area" name="Avería" placeholder="¿Qué le pasa?" required></textarea>
+        <label class="ok"><input type="checkbox" name="Privacidad" value="Aceptada" required><span>He leído y acepto la <a href="#legal" onclick="document.getElementById('legal').open=true">política de privacidad</a>.</span></label>
+        <button class="btn btn-p" type="submit">Enviar consulta <svg><use href="#i-arrow"/></svg></button>
         <p class="info1">Responsable: Ruibasur Servicios Industriales, S.L. Finalidad: atender tu consulta. Derechos: acceso, rectificación, supresión y otros en info@rbsindustrial.com.</p>
-      </div>
+      </form>
     </div>
     <a class="mapa" href="https://www.google.com/maps/place/RBS+Servicios+Industriales/@36.1589243,-5.4652172,17z" style="display:block">
       <svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid slice">
@@ -437,7 +456,7 @@ footer .legal-link{color:rgba(255,255,255,.6)}
         <h4>Privacidad</h4>
         <p><b>Responsable:</b> Ruibasur Servicios Industriales, S.L., B-21946181, con los datos de contacto indicados en el aviso legal.</p>
         <p><b>Finalidad:</b> atender tus consultas, darte cita y preparar presupuestos con los datos que nos facilitas por el formulario, teléfono, WhatsApp o email. <b>Legitimación:</b> tu consentimiento y, si contratas, la ejecución del servicio. <b>Conservación:</b> el tiempo necesario para atender la consulta y, si hay relación comercial, los plazos legales.</p>
-        <p><b>Destinatarios:</b> no cedemos tus datos salvo obligación legal. Los proveedores de alojamiento web y correo acceden a ellos como encargados del tratamiento. <b>Derechos:</b> acceso, rectificación, supresión, oposición, limitación y portabilidad en info@rbsindustrial.com. Puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).</p>
+        <p><b>Destinatarios:</b> no cedemos tus datos salvo obligación legal. Los proveedores de alojamiento web, correo y envío del formulario (FormSubmit) acceden a ellos como encargados del tratamiento; algunos pueden estar fuera del Espacio Económico Europeo, con las garantías que exige el RGPD. <b>Derechos:</b> acceso, rectificación, supresión, oposición, limitación y portabilidad en info@rbsindustrial.com. Puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).</p>
       </div>
       <div>
         <h4>Cookies</h4>
@@ -450,7 +469,8 @@ footer .legal-link{color:rgba(255,255,255,.6)}
 
 <div class="sticky">
   <a class="btn btn-p" href="tel:+34697212456"><svg><use href="#i-tel"/></svg>Llamar</a>
-  <a class="btn btn-s" href="#"><svg><use href="#i-wa"/></svg>WhatsApp</a>
+  <a class="btn btn-s" href="https://wa.me/34697212456"><svg><use href="#i-wa"/></svg>WhatsApp</a>
 </div>
+<script>if(/enviado=1/.test(location.search)){var e=document.querySelector(".sent");if(e)e.hidden=false}</script>
 </body>
 </html>
