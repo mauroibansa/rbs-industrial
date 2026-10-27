@@ -183,6 +183,9 @@ section{padding:120px 0}
 .f::placeholder{color:#8d8a8a}
 .f:focus{outline:none;border-color:var(--gris);background:#fff}
 .hp{position:absolute;left:-9999px}
+.skip{position:absolute;left:16px;top:-60px;z-index:30;background:#fff;color:var(--texto);padding:10px 16px;border-radius:3px;font-weight:600}
+.skip:focus{top:16px}
+.form .btn[disabled]{opacity:.7;cursor:wait}
 .sent{background:#eef6ee;color:#2f6b2f;padding:12px 14px;border-radius:3px;font-size:15px;margin-bottom:18px}
 .f.area{height:112px;resize:vertical}
 .lbl{font-size:14px;color:var(--texto-2);margin:4px 0 8px}
@@ -269,6 +272,7 @@ footer .legal-link{color:rgba(255,255,255,.6)}
 </style>
 </head>
 <body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -358,7 +362,7 @@ footer .legal-link{color:rgba(255,255,255,.6)}
   </div>
 </header>
 
-<main>
+<main id="contenido" tabindex="-1">
 <section class="hero" style="padding:0">
   <div class="wrap top">
     <div>
@@ -369,7 +373,7 @@ footer .legal-link{color:rgba(255,255,255,.6)}
       <p class="lead">Camiones, tractoras, carretillas, manipuladoras y grúas. Diagnosis, mecánica, hidráulica y electricidad en el mismo taller.</p>
       <div class="ctas">
         <a class="btn btn-p" href="tel:+34697212456"><svg aria-hidden="true"><use href="#i-tel"/></svg>Llamar al taller</a>
-        <a class="btn btn-s" href="https://wa.me/34697212456"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+        <a class="btn btn-s" href="https://wa.me/34697212456?text=Hola%2C%20os%20escribo%20desde%20la%20web%20rbsindustrial.com."><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
       </div>
     </div>
   </div>
@@ -478,7 +482,7 @@ footer .legal-link{color:rgba(255,255,255,.6)}
         <h2>¿Máquina parada? Llámanos.</h2>
         <p style="color:rgba(255,255,255,.78);max-width:440px">Cuéntanos qué máquina es y qué le pasa. Te decimos cuándo podemos verla o si vamos nosotros.</p>
         <a class="big-tel" href="tel:+34697212456">697 21 24 56</a>
-        <a class="btn btn-s" href="https://wa.me/34697212456"><svg aria-hidden="true"><use href="#i-wa"/></svg>Escribir por WhatsApp</a>
+        <a class="btn btn-s" href="https://wa.me/34697212456?text=Hola%2C%20os%20escribo%20desde%20la%20web%20rbsindustrial.com."><svg aria-hidden="true"><use href="#i-wa"/></svg>Escribir por WhatsApp</a>
         <div class="datos">
           <div><b>Dirección</b><span>Pol. Ind. La Menacha<br>Avda. Caetaria, 4<br>11205 Algeciras, Cádiz</span></div>
           <div><b>Horario</b><span>Lunes a viernes<br>8:00–14:00 y 15:30–17:30<br>Sábado y domingo cerrado</span></div>
@@ -559,8 +563,23 @@ footer .legal-link{color:rgba(255,255,255,.6)}
 
 <div class="sticky">
   <a class="btn btn-p" href="tel:+34697212456"><svg aria-hidden="true"><use href="#i-tel"/></svg>Llamar</a>
-  <a class="btn btn-s" href="https://wa.me/34697212456"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+  <a class="btn btn-s" href="https://wa.me/34697212456?text=Hola%2C%20os%20escribo%20desde%20la%20web%20rbsindustrial.com."><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
 </div>
+<script>
+/* Formulario: avisos en español, estado de envío y sin envíos dobles */
+(function(){
+  var f=document.querySelector('.form');if(!f)return;
+  var msg={'Nombre o empresa':'Escribe tu nombre o el de tu empresa.','Teléfono':'Escribe un teléfono para poder llamarte.','Avería':'Cuéntanos brevemente qué le pasa a la máquina.','Privacidad':'Para enviar la consulta tienes que aceptar la política de privacidad.'};
+  f.querySelectorAll('[required]').forEach(function(el){
+    el.addEventListener('invalid',function(){if(el.validity.valueMissing&&msg[el.name])el.setCustomValidity(msg[el.name])});
+    el.addEventListener('input',function(){el.setCustomValidity('')});
+    el.addEventListener('change',function(){el.setCustomValidity('')});
+  });
+  var b=f.querySelector('button[type=submit]'),t=b.innerHTML;
+  f.addEventListener('submit',function(e){if(b.disabled){e.preventDefault();return}b.disabled=true;b.textContent='Enviando…'});
+  window.addEventListener('pageshow',function(){b.disabled=false;b.innerHTML=t});
+})();
+</script>
 <script>
 /* Estadísticas sin cookies (GoatCounter). Se activan al poner el código de la cuenta en GC. */
 (function(){
