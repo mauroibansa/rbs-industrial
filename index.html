@@ -592,6 +592,27 @@ footer .legal-link a:hover{color:#fff}
   var t=document.getElementById('estado-tel');if(t&&on){t.textContent='Abierto ahora';t.className='estado on'}
 })();
 </script>
-<script>if(/enviado=1/.test(location.search)){var e=document.querySelector(".sent");if(e)e.hidden=false}</script>
+<script>
+/* Estadísticas sin cookies (GoatCounter). Se activan al poner el código de la cuenta en GC. */
+(function(){
+  var GC='';
+  var enviado=/enviado=1/.test(location.search);
+  if(enviado){var e=document.querySelector(".sent");if(e)e.hidden=false}
+  if(!GC)return;
+  window.goatcounter={no_onload:false};
+  var s=document.createElement('script');s.async=true;s.src='https://gc.zgo.at/count.js';
+  s.setAttribute('data-goatcounter','https://'+GC+'.goatcounter.com/count');
+  document.head.appendChild(s);
+  function ev(n){if(window.goatcounter&&goatcounter.count)goatcounter.count({path:n,title:n,event:true})}
+  if(enviado)s.addEventListener('load',function(){ev('formulario-enviado')});
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a');if(!a)return;
+    var h=a.getAttribute('href')||'',t;
+    if(h.indexOf('tel:')==0)t='llamar';else if(h.indexOf('wa.me')>-1)t='whatsapp';else if(h.indexOf('mailto:')==0)t='email';else if(h.indexOf('google.com/maps')>-1)t='como-llegar';else return;
+    var z=a.closest('header')?'cabecera':a.closest('.sticky')?'barra-movil':a.closest('section')?a.closest('section').id||'portada':'pie';
+    ev(t+'-'+z);
+  });
+})();
+</script>
 </body>
 </html>
