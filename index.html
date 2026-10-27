@@ -550,6 +550,7 @@ footer .legal-link{color:rgba(255,255,255,.6)}
       <div>
         <h4>Cookies</h4>
         <p>Esta web no utiliza cookies analíticas, publicitarias ni de terceros. Solo podría usar cookies técnicas imprescindibles para su funcionamiento, que no requieren consentimiento.</p>
+        <p>Para saber cuántas visitas recibe la web y cuántas personas pulsan llamar o WhatsApp usamos GoatCounter, un servicio de estadísticas que no instala cookies ni guarda datos que te identifiquen.</p>
         <p>El enlace a Google Maps te lleva a la web de Google, que aplica su propia política de cookies. Si en el futuro incorporamos otro tipo de cookies, te pediremos el consentimiento antes de instalarlas.</p>
       </div>
     </div>
@@ -560,6 +561,27 @@ footer .legal-link{color:rgba(255,255,255,.6)}
   <a class="btn btn-p" href="tel:+34697212456"><svg aria-hidden="true"><use href="#i-tel"/></svg>Llamar</a>
   <a class="btn btn-s" href="https://wa.me/34697212456"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
 </div>
-<script>if(/enviado=1/.test(location.search)){var e=document.querySelector(".sent");if(e)e.hidden=false}</script>
+<script>
+/* Estadísticas sin cookies (GoatCounter). Se activan al poner el código de la cuenta en GC. */
+(function(){
+  var GC='';
+  var enviado=/enviado=1/.test(location.search);
+  if(enviado){var e=document.querySelector(".sent");if(e)e.hidden=false}
+  if(!GC)return;
+  window.goatcounter={no_onload:false};
+  var s=document.createElement('script');s.async=true;s.src='https://gc.zgo.at/count.js';
+  s.setAttribute('data-goatcounter','https://'+GC+'.goatcounter.com/count');
+  document.head.appendChild(s);
+  function ev(n){if(window.goatcounter&&goatcounter.count)goatcounter.count({path:n,title:n,event:true})}
+  if(enviado)s.addEventListener('load',function(){ev('formulario-enviado')});
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a');if(!a)return;
+    var h=a.getAttribute('href')||'',t;
+    if(h.indexOf('tel:')==0)t='llamar';else if(h.indexOf('wa.me')>-1)t='whatsapp';else if(h.indexOf('mailto:')==0)t='email';else if(h.indexOf('google.com/maps')>-1)t='como-llegar';else return;
+    var z=a.closest('header')?'cabecera':a.closest('.sticky')?'barra-movil':a.closest('section')?a.closest('section').id||'portada':'pie';
+    ev(t+'-'+z);
+  });
+})();
+</script>
 </body>
 </html>
