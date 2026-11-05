@@ -47,6 +47,7 @@
     "addressCountry": "ES"
   },
   "geo": {"@type": "GeoCoordinates", "latitude": 36.1589243, "longitude": -5.4652172},
+  "sameAs": ["https://www.linkedin.com/company/PENDIENTE-URL/"],
   "hasMap": "https://www.google.com/maps/place/RBS+Servicios+Industriales/@36.1589243,-5.4652172,17z",
   "openingHoursSpecification": [
     {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "14:00"},
@@ -207,6 +208,9 @@ footer>.wrap{display:flex;justify-content:space-between;align-items:center}
 footer img{height:34px;width:auto}
 footer .legal-link{color:rgba(255,255,255,.6)}
 footer .legal-link a:hover{color:#fff}
+footer .social{display:inline-flex;align-items:center;gap:9px;color:rgba(255,255,255,.78);font-weight:600}
+footer .social svg{width:18px;height:18px}
+footer .social:hover{color:#fff}
 .estado{display:flex;align-items:center;gap:8px}
 .estado:before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;flex:none}
 .estado.on,.nav .tel small.estado.on{color:#7BD88F}
@@ -294,6 +298,7 @@ footer .legal-link a:hover{color:#fff}
   <defs>
     <symbol id="i-tel" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8Z"/></symbol>
     <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.3-.3-.4-.5-.5Z"/></symbol>
+    <symbol id="i-in" viewBox="0 0 24 24"><path fill="currentColor" d="M20.4 2H3.6C2.7 2 2 2.7 2 3.6v16.8c0 .9.7 1.6 1.6 1.6h16.8c.9 0 1.6-.7 1.6-1.6V3.6c0-.9-.7-1.6-1.6-1.6ZM8 19H5V9.5h3V19ZM6.5 8.2a1.7 1.7 0 1 1 0-3.5 1.7 1.7 0 0 1 0 3.5ZM19 19h-3v-4.6c0-1.1 0-2.5-1.5-2.5s-1.8 1.2-1.8 2.4V19h-3V9.5h2.8v1.3h.1c.4-.7 1.4-1.5 2.8-1.5 3 0 3.6 2 3.6 4.6V19Z"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" d="M4 12h15M13 6l6 6-6 6"/></symbol>
 
     <!-- Máquinas en dibujo técnico (línea + acento naranja). Suelo en y=196 -->
@@ -552,6 +557,7 @@ footer .legal-link a:hover{color:#fff}
     <img src="assets/logo-neg.svg" width="199" height="70" alt="RBS Servicios Industriales">
     <span>Ruibasur Servicios Industriales, S.L. · B-21946181</span>
     <nav class="legal-link" aria-label="Legal"><a href="legal.html#aviso-legal">Aviso legal</a> · <a href="legal.html#privacidad">Privacidad</a> · <a href="legal.html#cookies">Cookies</a></nav>
+    <a class="social" href="https://www.linkedin.com/company/PENDIENTE-URL/" target="_blank" rel="noopener me"><svg aria-hidden="true"><use href="#i-in"/></svg>LinkedIn</a>
   </div>
 </footer>
 
