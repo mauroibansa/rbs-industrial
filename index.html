@@ -25,6 +25,7 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="preload" href="assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
 <link href="assets/fonts-archivo.css" rel="stylesheet">
+<script src="assets/analytics.js"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -520,7 +521,7 @@ footer .social:hover{color:#fff}
         <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
         <h3>Pide cita o presupuesto</h3>
         <p class="sub">Te contestamos lo antes posible.</p>
-        <p class="sent" role="status" hidden>Gracias. Hemos recibido tu consulta y te contestamos lo antes posible.</p>
+        <p class="sent" role="status" hidden>Gracias. Tu consulta se ha enviado. Te contestamos lo antes posible.</p>
         <div class="row"><input class="f" name="Nombre o empresa" aria-label="Nombre o empresa" autocomplete="organization" placeholder="Nombre o empresa" required><input class="f" type="tel" name="Teléfono" aria-label="Teléfono" autocomplete="tel" placeholder="Teléfono" required></div>
         <div class="lbl" id="lbl-tipo">Tipo de vehículo o máquina</div>
         <div class="chips" role="radiogroup" aria-labelledby="lbl-tipo">
@@ -599,6 +600,5 @@ footer .social:hover{color:#fff}
   var t=document.getElementById('estado-tel');if(t&&on){t.textContent='Abierto ahora';t.className='estado on'}
 })();
 </script>
-<script>if(/enviado=1/.test(location.search)){var e=document.querySelector(".sent");if(e)e.hidden=false}</script>
 </body>
 </html>
