@@ -42,11 +42,23 @@ navegador/dispositivo de administración. La preferencia se guarda localmente.
 Para volver a contar: https://www.rbsindustrial.com/?estadisticas=incluir.
 Si el navegador impide almacenar preferencias, la exclusión no persiste.
 
-## Campañas
+## Campañas y contactos por canal
 
-Ejemplo para un enlace futuro desde la ficha de Google:
-`https://www.rbsindustrial.com/?utm_campaign=presencia-local&utm_source=google-maps&utm_medium=organic`.
-No se han modificado enlaces de LinkedIn ni fichas de Google en este cambio.
+- Google Maps: `https://www.rbsindustrial.com/?utm_source=google-maps&utm_medium=organic&utm_campaign=google-maps-rbs`.
+- LinkedIn: `https://www.rbsindustrial.com/?utm_source=linkedin&utm_medium=social&utm_campaign=linkedin-rbs`.
+
+El perfil y el botón de LinkedIn usan el segundo enlace. El primero se ha guardado
+desde la cuenta propietaria de la ficha de Google el 16 de noviembre de 2026;
+Google lo mostró pendiente de revisión tras guardarlo.
+
+Los parámetros se conservan en los clics y en el enlace de retorno de FormSubmit.
+Para consultar contactos por canal, abrir el evento correspondiente en GoatCounter
+y revisar sus referentes: `google-maps` o `linkedin`. Los eventos llevan el canal
+explícitamente en su referente; los parámetros de campaña identifican las visitas.
+El correo incluye el campo «Origen web» (Google Maps o LinkedIn). El mensaje
+preparado de WhatsApp añade «Enlace de Google Maps» o «Enlace de LinkedIn»;
+el visitante puede editarlo antes de enviarlo. No se atribuyen llamadas reales:
+solo se registran los clics en el teléfono.
 
 ## Comprobación
 

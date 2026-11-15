@@ -10,12 +10,17 @@ function storage(initial = {}) {
   return {getItem: k => values.get(k) ?? null, setItem: (k,v) => values.set(k,v), removeItem: k => values.delete(k)};
 }
 function run({search='', host='www.rbsindustrial.com', session=storage(), local=storage(), beacon=true, visible='visible', blockedStorage=false} = {}) {
-  const requests=[], pixels=[], listeners={}, message={hidden:true};
+  const requests=[], pixels=[], listeners={}, message={hidden:true}, hiddenFields=[];
+  const next={value:'https://www.rbsindustrial.com/?enviado=1#contacto'};
+  const form={querySelector:()=>next,appendChild:field=>hiddenFields.push(field)};
+  const whatsapp={href:'https://wa.me/34697212456?text=Hola'};
   const broken = {getItem(){throw Error('blocked')},setItem(){throw Error('blocked')},removeItem(){throw Error('blocked')}};
   const document = {
     title:'RBS', referrer:'https://example.com/private/path?email=secret@example.com',
     readyState:'loading', visibilityState:visible,
-    querySelector:()=>message,
+    querySelector:selector=>selector==='.sent'?message:selector==='form.form'?form:null,
+    createElement:()=>({}),
+    querySelectorAll:()=>[whatsapp],
     addEventListener:(name,fn)=>{listeners[name]=fn},
     removeEventListener:name=>{delete listeners[name]}
   };
@@ -30,7 +35,7 @@ function run({search='', host='www.rbsindustrial.com', session=storage(), local=
     const anchor={getAttribute:()=>href,closest:sel=>sel==='header'?(zone==='cabecera'?{}:null):sel==='.sticky'?(zone==='barra-movil'?{}:null):sel==='section'?section:null};
     listeners.click?.({button:0,target:{closest:()=>anchor}});
   }
-  return {requests,pixels,session,local,listeners,message,document,click};
+  return {requests,pixels,session,local,listeners,message,document,click,next,hiddenFields,whatsapp};
 }
 
 test('captures an immediate contact click without waiting for another script',()=>{
@@ -91,4 +96,28 @@ test('hidden tabs count once when visible',()=>{
   const x=run({visible:'hidden'});assert.equal(x.requests.length,0);
   x.document.visibilityState='visible';x.listeners.visibilitychange();assert.equal(x.requests.length,1);
   assert.equal(x.listeners.visibilitychange,undefined);
+});
+test('Maps and LinkedIn labels reach clicks, form emails and the return event',()=>{
+  for(const [source,label] of [['google-maps','Google Maps'],['linkedin','LinkedIn']]) {
+    const search='?utm_source='+source+'&utm_campaign='+source+'-rbs&utm_medium=organic';
+    const session=storage();const x=run({search,session});
+    x.click('https://wa.me/34697212456','contacto');
+    assert.equal(new URLSearchParams(x.requests.at(-1).searchParams.get('q')).get('utm_source'),source);
+    assert.equal(x.requests.at(-1).searchParams.get('r'),source);
+    assert.equal(x.hiddenFields.find(f=>f.name==='Origen web').value,label);
+    assert.equal(new URL(x.whatsapp.href).searchParams.get('text'),'Hola Enlace de '+label+'.');
+    x.listeners.submit({target:{matches:()=>true,checkValidity:()=>true}});
+    const returnUrl=new URL(x.next.value);
+    assert.equal(returnUrl.origin,'https://www.rbsindustrial.com');
+    assert.equal(returnUrl.searchParams.get('utm_source'),source);
+    const returned=run({session,search:returnUrl.search});
+    assert.equal(returned.requests.at(-1).searchParams.get('p'),'retorno-formulario');
+    assert.equal(returned.requests.at(-1).searchParams.get('r'),source);
+    assert.equal(new URLSearchParams(returned.requests.at(-1).searchParams.get('q')).get('utm_source'),source);
+  }
+});
+test('arbitrary query data is not propagated into the return URL or email source',()=>{
+  const x=run({search:'?email=secret@example.com&utm_source=secret@example.com'});
+  assert(!x.next.value.includes('secret'));
+  assert.equal(x.hiddenFields.length,0);
 });

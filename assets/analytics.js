@@ -14,6 +14,12 @@
   var returned = false;
   var ignored = false;
   var images = [];
+  // Keep only explicit campaign labels; preserve them on the form return URL.
+  var campaign = new URLSearchParams();
+  ['utm_campaign', 'utm_source', 'utm_medium'].forEach(function (key) {
+    var value = query.get(key);
+    if (value && /^[a-z0-9_.~-]{1,80}$/i.test(value)) campaign.set(key, value);
+  });
 
   // This preference is set only when the site administrator explicitly asks.
   try {
@@ -33,6 +39,30 @@
   function pageReady() {
     var message = document.querySelector('.sent');
     if (message) message.hidden = !returned;
+    var form = document.querySelector('form.form');
+    if (!form) return;
+    var next = form.querySelector('input[name="_next"]');
+    if (next) {
+      var destination = new URL(next.value);
+      campaign.forEach(function (value, key) { destination.searchParams.set(key, value); });
+      next.value = destination.href;
+    }
+    // A fixed label also reaches the workshop's email, without storing analytics IDs.
+    var source = campaign.get('utm_source');
+    var sourceNames = {'google-maps': 'Google Maps', 'linkedin': 'LinkedIn'};
+    if (Object.prototype.hasOwnProperty.call(sourceNames, source)) {
+      var origin = document.createElement('input');
+      origin.type = 'hidden';
+      origin.name = 'Origen web';
+      origin.value = sourceNames[source];
+      form.appendChild(origin);
+      document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function (anchor) {
+        var whatsapp = new URL(anchor.href);
+        var text = whatsapp.searchParams.get('text') || 'Hola, os escribo desde la web rbsindustrial.com.';
+        whatsapp.searchParams.set('text', text + ' Enlace de ' + sourceNames[source] + '.');
+        anchor.href = whatsapp.href;
+      });
+    }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', pageReady);
   else pageReady();
@@ -44,13 +74,8 @@
 
   if ((!production && !test) || (ignored && !test)) return;
 
-  // Retain campaign labels only; never transmit the full query or form fields.
-  var campaign = new URLSearchParams();
-  ['utm_campaign', 'utm_source', 'utm_medium'].forEach(function (key) {
-    var value = query.get(key);
-    if (value && /^[a-z0-9_.~-]{1,80}$/i.test(value)) campaign.set(key, value);
-  });
   var referrer = '';
+  var channel = /^(google-maps|linkedin)$/.test(campaign.get('utm_source')) ? campaign.get('utm_source') : '';
   try {
     var ref = new URL(document.referrer);
     if (ref.hostname.replace(/^www\./, '') !== location.hostname.replace(/^www\./, '')) referrer = ref.origin;
@@ -60,7 +85,7 @@
     var data = new URLSearchParams({
       p: test ? (event ? 'prueba-' + test + '-' + path : '/pruebas/' + test + '/') : path,
       t: test ? 'PRUEBA · ' + title : title,
-      r: test ? 'prueba-local' : referrer,
+      r: event && channel ? channel : test ? 'prueba-local' : referrer,
       rnd: Math.random().toString(36).slice(2, 10)
     });
     if (event) data.set('e', 'true');
