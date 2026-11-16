@@ -508,16 +508,13 @@ footer .social:hover{color:#fff}
           <div><b>Cómo llegar</b><a href="https://www.google.com/maps/place/RBS+Servicios+Industriales/@36.1589243,-5.4677921,624m/data=!3m2!1e3!4b1!4m6!3m5!1s0xd0ceb01d55d72b3:0x6984e88447d10573!8m2!3d36.1589243!4d-5.4652172!16s%2Fg%2F11z13rqwyh"><span>Abrir en Google Maps →</span></a></div>
         </div>
       </div>
-      <form class="form" action="https://formsubmit.co/info@rbsindustrial.com" method="POST">
-        <input type="hidden" name="_subject" value="Nueva consulta desde rbsindustrial.com">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
+      <form class="form" action="https://rbs-contacto.mauro-f09.workers.dev/consulta" data-resend-endpoint="https://rbs-contacto.mauro-f09.workers.dev/consulta" method="POST">
         <input type="hidden" name="_next" value="https://www.rbsindustrial.com/?enviado=1#contacto">
         <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
         <h3>Pide cita o presupuesto</h3>
         <p class="sub">Te contestamos lo antes posible. Los campos con * son obligatorios.</p>
         <p class="sent" role="status" hidden>Gracias. Tu consulta se ha enviado. Te contestamos lo antes posible.</p>
-        <div class="row"><div><label class="field-label" for="consulta-nombre">Nombre o empresa *</label><input id="consulta-nombre" class="f" name="Nombre o empresa" autocomplete="organization" required></div><div><label class="field-label" for="consulta-telefono">Teléfono *</label><input id="consulta-telefono" class="f" type="tel" name="Teléfono" autocomplete="tel" required></div></div>
+        <div class="row"><div><label class="field-label" for="consulta-nombre">Nombre o empresa *</label><input id="consulta-nombre" class="f" name="Nombre o empresa" maxlength="160" autocomplete="organization" required></div><div><label class="field-label" for="consulta-telefono">Teléfono *</label><input id="consulta-telefono" class="f" type="tel" name="Teléfono" maxlength="40" autocomplete="tel" required></div></div>
         <div class="lbl" id="lbl-tipo">Tipo de vehículo o máquina</div>
         <div class="chips" role="radiogroup" aria-labelledby="lbl-tipo">
           <label><input type="radio" name="Tipo de máquina" value="Camión"><span class="chip">Camión</span></label>
@@ -527,12 +524,13 @@ footer .social:hover{color:#fff}
           <label><input type="radio" name="Tipo de máquina" value="Grúa"><span class="chip">Grúa</span></label>
           <label><input type="radio" name="Tipo de máquina" value="Otro"><span class="chip">Otro</span></label>
         </div>
-        <div class="row"><div><label class="field-label" for="consulta-modelo">Marca y modelo</label><input id="consulta-modelo" class="f" name="Marca y modelo" placeholder="Ej.: marca y modelo"></div><div><label class="field-label" for="consulta-ubicacion">¿Dónde está la máquina?</label><input id="consulta-ubicacion" class="f" name="Ubicación" placeholder="Ej.: taller, obra o polígono"></div></div>
+        <div class="row"><div><label class="field-label" for="consulta-modelo">Marca y modelo</label><input id="consulta-modelo" class="f" name="Marca y modelo" maxlength="160" placeholder="Ej.: marca y modelo"></div><div><label class="field-label" for="consulta-ubicacion">¿Dónde está la máquina?</label><input id="consulta-ubicacion" class="f" name="Ubicación" maxlength="240" placeholder="Ej.: taller, obra o polígono"></div></div>
         <label class="field-label" for="consulta-averia">¿Qué le pasa? *</label>
-        <textarea id="consulta-averia" class="f area" name="Avería" required></textarea>
-        <label class="ok"><input type="checkbox" name="Privacidad" value="Aceptada" required><span>He leído y acepto la <a href="legal.html#privacidad" target="_blank" rel="noopener">política de privacidad</a>.</span></label>
-        <button class="btn btn-p" type="submit">Enviar consulta <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
-        <p class="info1">Responsable: Ruibasur Servicios Industriales, S.L. Finalidad: atender tu consulta. Derechos: acceso, rectificación, supresión y otros en info@rbsindustrial.com.</p>
+        <textarea id="consulta-averia" class="f area" name="Avería" maxlength="3000" required></textarea>
+        <label class="ok"><input type="checkbox" name="Privacidad" value="Aceptada" required><span>He leído la <a href="legal.html#privacidad" target="_blank" rel="noopener">política de privacidad</a>.</span></label>
+        <p data-form-fallback>Si el formulario no se activa, puedes <a href="tel:+34697212456">llamarnos</a> o escribirnos por <a href="https://wa.me/34697212456">WhatsApp</a>.</p>
+        <button class="btn btn-p" type="submit" disabled>Enviar consulta <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <p class="info1">Responsable: Ruibasur Servicios Industriales, S.L. Usamos tus datos para atender tu consulta, cita o presupuesto. El formulario utiliza Cloudflare y Resend, con transferencias internacionales descritas en la política de privacidad. Derechos y contacto: info@rbsindustrial.com.</p>
       </form>
     </div>
     <a class="mapa" href="https://www.google.com/maps/place/RBS+Servicios+Industriales/@36.1589243,-5.4677921,624m/data=!3m2!1e3!4b1!4m6!3m5!1s0xd0ceb01d55d72b3:0x6984e88447d10573!8m2!3d36.1589243!4d-5.4652172!16s%2Fg%2F11z13rqwyh" style="display:block">
@@ -567,7 +565,7 @@ footer .social:hover{color:#fff}
 /* Formulario: avisos en español, estado de envío y sin envíos dobles */
 (function(){
   var f=document.querySelector('.form');if(!f)return;
-  var msg={'Nombre o empresa':'Escribe tu nombre o el de tu empresa.','Teléfono':'Escribe un teléfono para poder llamarte.','Avería':'Cuéntanos brevemente qué le pasa a la máquina.','Privacidad':'Para enviar la consulta tienes que aceptar la política de privacidad.'};
+  var msg={'Nombre o empresa':'Escribe tu nombre o el de tu empresa.','Teléfono':'Escribe un teléfono para poder llamarte.','Avería':'Cuéntanos brevemente qué le pasa a la máquina.','Privacidad':'Para enviar la consulta tienes que confirmar que has leído la política de privacidad.'};
   f.querySelectorAll('[required]').forEach(function(el){
     el.addEventListener('invalid',function(){if(el.validity.valueMissing&&msg[el.name])el.setCustomValidity(msg[el.name])});
     el.addEventListener('input',function(){el.setCustomValidity('')});
@@ -575,7 +573,7 @@ footer .social:hover{color:#fff}
   });
   var b=f.querySelector('button[type=submit]'),t=b.innerHTML;
   f.addEventListener('submit',function(e){if(b.disabled){e.preventDefault();return}b.disabled=true;b.textContent='Enviando…'});
-  window.addEventListener('pageshow',function(){b.disabled=false;b.innerHTML=t});
+  window.addEventListener('pageshow',function(){b.disabled=!!f.getAttribute('data-resend-endpoint')&&f.getAttribute('data-resend-ready')!=='true';b.innerHTML=t});
 })();
 </script>
 <script>
@@ -596,5 +594,6 @@ footer .social:hover{color:#fff}
   var t=document.getElementById('estado-tel');if(t&&on){t.textContent='Abierto ahora';t.className='estado on'}
 })();
 </script>
+<script src="assets/contact-resend.js"></script>
 </body>
 </html>
