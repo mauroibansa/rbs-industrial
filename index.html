@@ -162,9 +162,9 @@ section{padding:120px 0}
 .b-adr .adrd span{font-size:13.5px;color:var(--texto-2)}
 .jaltest{background:#fff;padding:96px 0}
 .jaltest .wrap{display:grid;grid-template-columns:1fr 420px;gap:80px;align-items:stretch}
-.jlogo{background:#1E9AD6;border-radius:4px;order:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;position:relative}
-.jlogo svg{width:76%}
-.jlogo .of{font-weight:700;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.18);padding:7px 14px;border-radius:2px}
+.jlogo{background:#fff;border:1px solid #e3e1e1;border-radius:4px;order:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;position:relative}
+.jlogo img{width:76%;max-width:300px;height:auto}
+.jlogo .of{font-weight:700;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--texto);background:var(--perla);padding:7px 14px;border-radius:2px}
 .jaltest h2{font-size:46px;margin:18px 0 18px}
 .jaltest .wrap>div:not(.jlogo){order:1}
 .jaltest p{color:var(--texto-2);font-size:18px;max-width:600px}
@@ -475,16 +475,8 @@ footer .social:hover{color:#fff}
 <section class="jaltest" id="jaltest">
   <div class="wrap">
     <div class="jlogo">
-      <!-- Logo provisional redibujado: sustituir por el vector oficial de Cojali -->
-      <svg viewBox="0 0 300 110" role="img" aria-label="Jaltest by Cojali">
-        <g fill="#fff">
-          <circle cx="30" cy="52" r="22"/><circle cx="58" cy="70" r="7"/>
-          <text x="78" y="72" font-family="Archivo" font-weight="700" font-size="62" letter-spacing="-1">jaltest</text>
-          <text x="214" y="98" font-family="Archivo" font-weight="500" font-size="15" letter-spacing="1">BY</text>
-          <text x="238" y="98" font-family="Archivo" font-weight="800" font-size="15" letter-spacing="1">COJALI</text>
-        </g>
-        <circle cx="30" cy="52" r="9" fill="#1E9AD6"/>
-      </svg>
+      <!-- Archivo original: https://www.jaltest.com/images/base/logo-jaltest.svg -->
+      <img src="assets/logo-jaltest.svg" width="92" height="40" loading="lazy" decoding="async" alt="Jaltest">
       <span class="of">Servicio oficial</span>
     </div>
     <div>
