@@ -26,3 +26,8 @@ test('un segundo envío ya cancelado no genera otra llamada',async()=>{
  await ui.listeners.submit({defaultPrevented:true});assert.equal(calls,0);
  await ui.submit();assert.equal(calls,1);assert.equal(ui.redirect,'');assert.equal(ui.error.textContent,'Espera');
 });
+
+test('una respuesta HTML o JSON inválido muestra una alternativa comprensible sin detalles técnicos',async()=>{
+ const ui=setup(async()=>({ok:false,json:async()=>{throw new SyntaxError('Unexpected token < in JSON')}}));
+ await ui.submit();assert.equal(ui.redirect,'');assert.equal(ui.button.disabled,false);assert.match(ui.error.textContent,/contacta por teléfono o WhatsApp/);assert.doesNotMatch(ui.error.textContent,/Unexpected|JSON|token/);
+});

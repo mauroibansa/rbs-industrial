@@ -51,7 +51,7 @@ El perfil y el botón de LinkedIn usan el segundo enlace. El primero se ha guard
 desde la cuenta propietaria de la ficha de Google el 16 de noviembre de 2026;
 Google lo mostró pendiente de revisión tras guardarlo.
 
-Los parámetros se conservan en los clics y en el enlace de retorno de FormSubmit.
+Los parámetros se conservan en los clics y en el enlace de retorno del formulario con Resend.
 Para consultar contactos por canal, abrir el evento correspondiente en GoatCounter
 y revisar sus referentes: `google-maps` o `linkedin`. Los eventos llevan el canal
 explícitamente en su referente; los parámetros de campaña identifican las visitas.

@@ -33,7 +33,7 @@
       location.assign(next.href);
     }catch(reason){
       try{sessionStorage.removeItem('rbs-formulario-pendiente');}catch(_){}
-      error.textContent=(reason instanceof TypeError||reason.name==='AbortError')?'No se ha confirmado el envío. Comprueba la conexión o contacta por teléfono o WhatsApp.':reason.message;
+      error.textContent=(reason instanceof TypeError||reason.name==='AbortError'||reason.name==='SyntaxError')?'No se ha confirmado el envío. Comprueba la conexión o contacta por teléfono o WhatsApp.':reason.message;
       error.hidden=false;button.disabled=false;button.innerHTML=original;
     }finally{window.clearTimeout(timeout);}
   });
