@@ -1,6 +1,6 @@
 # Migración del formulario a Resend
 
-Estado a 16/11/2026: dominio verificado, función desplegada y clave de envío limitada guardada como secreto. Recepción real comprobada antes de retirar FormSubmit: referencia adc56d44-238b-43be-8267-b2aa06a2f8f1, Resend entregado y Mail → Entrada de Rbsindustrial, 02:13 (Madrid). Publicación del formulario en curso; comprobación final de navegador pendiente.
+Estado a 16/11/2026: dominio verificado, función desplegada y clave de envío limitada guardada como secreto. Recepción real comprobada antes de retirar FormSubmit: referencia adc56d44-238b-43be-8267-b2aa06a2f8f1, Resend entregado y Mail → Entrada de Rbsindustrial, 02:13 (Madrid). Formulario y privacidad publicados (cce5ae1). Segunda prueba desde la web pública recibida en Entrada de Rbsindustrial a las 02:17: referencia 0b724fbc-89ac-424f-8144-7dfca28bf7eb, origen LinkedIn, Resend 01a1e1ee-01e6-784a-8843-40e6a93a4b78 entregado. Confirmación de éxito visible en navegador. FormSubmit retirado; sin ruta temporal de QA publicada. 22 pruebas automatizadas superadas.
 
 - Sitio: GitHub Pages. El servidor de formulario es un Worker independiente.
 - Worker: `rbs-contacto`, cuenta Cloudflare de mauro@agenciamammut.com.
@@ -13,7 +13,7 @@ Estado a 16/11/2026: dominio verificado, función desplegada y clave de envío l
 - Binding `CONTACT_RATE_LIMITER`: 3 peticiones/60s por IP y ubicación Cloudflare. Es limitación aproximada, no global estricta. No crear almacenamiento de consultas.
 - Desactivar Workers Logs y trazas antes de habilitar tráfico real.
 
-## Publicación
+## Procedimiento de publicación y futuras revisiones
 
 1. Completar DNS DKIM y los dos CNAME que indique Resend; verificar dominio. No tocar MX, SPF o DKIM del correo habitual de RBS.
 2. Desplegar `server/resend/worker.mjs`; configuración en `server/resend/wrangler.jsonc`.
@@ -31,3 +31,7 @@ Estado a 16/11/2026: dominio verificado, función desplegada y clave de envío l
 El servidor valida campos, tamaño y teléfono; limita intentos; minimiza el correo; usa destinatario y remitente fijos e idempotencia; no imprime consultas ni respuestas del proveedor. La confirmación del navegador no acredita recepción en el buzón.
 
 Fuentes: https://resend.com/security/gdpr · https://resend.com/legal/dpa · https://resend.com/legal/subprocessors · https://www.cloudflare.com/cloudflare-customer-dpa/
+
+## Pendiente administrativo
+
+Confirmar y conservar el encargo de tratamiento RBS–Mammut y las condiciones aplicables de los proveedores. La publicación de la política no acredita por sí sola la formalización de ese encargo. No se ha firmado un contrato nuevo durante esta integración.
