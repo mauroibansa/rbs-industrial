@@ -47,9 +47,9 @@ Si el navegador impide almacenar preferencias, la exclusión no persiste.
 - Google Maps: `https://www.rbsindustrial.com/?utm_source=google-maps&utm_medium=organic&utm_campaign=google-maps-rbs`.
 - LinkedIn: `https://www.rbsindustrial.com/?utm_source=linkedin&utm_medium=social&utm_campaign=linkedin-rbs`.
 
-El perfil y el botón de LinkedIn usan el segundo enlace. El primero se ha guardado
-desde la cuenta propietaria de la ficha de Google el 16 de noviembre de 2026;
-Google lo mostró pendiente de revisión tras guardarlo.
+El perfil y el botón de LinkedIn usan el segundo enlace. El enlace de Google Maps ya está visible en la ficha pública, comprobado el
+16 de noviembre de 2026 con sus tres parámetros de campaña. Se da por cerrado
+el estado anterior de pendiente de revisión.
 
 Los parámetros se conservan en los clics y en el enlace de retorno del formulario con Resend.
 Para consultar contactos por canal, abrir el evento correspondiente en GoatCounter

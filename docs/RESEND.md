@@ -34,4 +34,10 @@ Fuentes: https://resend.com/security/gdpr · https://resend.com/legal/dpa · htt
 
 ## Pendiente administrativo
 
-Confirmar y conservar el encargo de tratamiento RBS–Mammut y las condiciones aplicables de los proveedores. La publicación de la política no acredita por sí sola la formalización de ese encargo. No se ha firmado un contrato nuevo durante esta integración.
+El encargo RBS–prestador está preparado con las partes y firmantes completos, sin marca comercial; su firma no se ha acreditado. Resend y Cloudflare revisados. BeOnline factura el alojamiento de RBS al prestador, por lo que se contempla como subencargado: queda acreditar qué anexo está incorporado a ese servicio. El 16/11/2026 se solicitó por correo confirmación y copia aplicable a soporte de BeOnline. Seguimiento programado para el 17/11/2026. La publicación de la política no acredita por sí sola la formalización de los encargos.
+
+## Revisión técnica final del 16 de noviembre de 2026
+
+23 pruebas de servidor, formulario y estadísticas superadas. Se comprobó la versión pública de los ajustes de error del formulario y contraste del botón 404. 27 recursos y rutas verificados; redirecciones de variantes del dominio a HTTPS con www, XML público disponible y ruta inexistente con estado 404. En móvil de 390 px no se detecta desbordamiento horizontal; los campos tienen etiqueta y el servidor rechaza una prueba de teléfono inválido. Las pruebas reales de recepción anteriores permanecen documentadas al inicio.
+
+El usuario confirma que RBS tiene acreditadas las condiciones de servicio oficial Jaltest y miembro de ADR Service; no se ha incorporado copia de dichas acreditaciones al repositorio. El enlace etiquetado de Maps ya es público. Google Search Console sigue mostrando «No se ha podido obtener» para el sitemap; no se ha reenviado. Quedan los seguimientos externos de Google y los documentos de privacidad, incluida la firma.
